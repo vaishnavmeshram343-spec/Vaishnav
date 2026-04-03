@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Advanced Quiz</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: radial-gradient(circle at top, #0f2027, #203a43, #2c5364);
+            color: white;
+        }
+
+        .container {
+            width: 55%;
+            margin: 40px auto;
+            padding: 25px;
+            border-radius: 20px;
+            background: rgba(0,0,0,0.6);
+            box-shadow: 0 0 30px rgba(0,255,255,0.4);
+        }
+
+        h2 {
+            text-align: center;
+            color: #00ffff;
+        }
+
+        input {
+            width: 85%;
+            padding: 12px;
+            margin: 8px auto;
+            display: block;
+            border-radius: 10px;
+            border: none;
+        }
+
+        .center-btn {
+            text-align: center;
+        }
+
+        button {
+            padding: 12px 30px;
+            background: linear-gradient(45deg, #00ffff, #00ffcc);
+            border: none;
+            border-radius: 25px;
+            color: black;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            box-shadow: 0 0 20px #00ffff;
+            transform: scale(1.1);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .question-box {
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 12px;
+        }
+
+        /* SAME PROFESSIONAL MCQ FORMAT */
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.15);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .option:hover {
+            background: rgba(0,255,255,0.3);
+            transform: translateX(5px);
+        }
+
+        .option input {
+            display: none;
+        }
+
+        .option::before {
+            content: "";
+            width: 18px;
+            height: 18px;
+            border: 2px solid #00ffff;
+            border-radius: 50%;
+            margin-right: 12px;
+        }
+
+        .option-text {
+            display: flex;
+            gap: 8px;
+        }
+
+        .option input:checked + .option-text {
+            color: #00ffff;
+            font-weight: bold;
+            background: rgba(0,255,255,0.2);
+            padding: 5px 10px;
+            border-radius: 6px;
+        }
+
+        #result {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- PAGE 1 -->
+    <div id="page1">
+        <h2>⚡ Advanced Quiz</h2>
+
+        <input type="text" id="name" placeholder="Enter Name">
+        <input type="email" id="email" placeholder="Enter Email">
+        <input type="number" id="age" placeholder="Enter Age">
+        <input type="password" id="password" placeholder="Enter Password">
+
+        <div class="center-btn">
+            <button onclick="startQuiz()">🚀 Start Quiz</button>
+        </div>
+    </div>
+
+    <!-- PAGE 2 -->
+    <div id="page2" class="hidden">
+
+        <form onsubmit="return submitQuiz()">
+
+            <!-- Q1 -->
+            <div class="question-box">
+                <p>1. HTML stands for?</p>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q1" value="1"><span class="option-text"><strong>A.</strong> Hyper Text Markup Language</span></label>
+                    <label class="option"><input type="radio" name="q1" value="0"><span class="option-text"><strong>B.</strong> High Text Machine Language</span></label>
+                    <label class="option"><input type="radio" name="q1" value="0"><span class="option-text"><strong>C.</strong> Hyper Tool Multi Language</span></label>
+                </div>
+            </div>
+
+            <!-- Q2 -->
+            <div class="question-box">
+                <p>2. CSS is used for?</p>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q2" value="1"><span class="option-text"><strong>A.</strong> Styling Web Pages</span></label>
+                    <label class="option"><input type="radio" name="q2" value="0"><span class="option-text"><strong>B.</strong> Database</span></label>
+                    <label class="option"><input type="radio" name="q2" value="0"><span class="option-text"><strong>C.</strong> Programming</span></label>
+                </div>
+            </div>
+
+            <!-- Q3 -->
+            <div class="question-box">
+                <p>3. JavaScript is?</p>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q3" value="1"><span class="option-text"><strong>A.</strong> Programming Language</span></label>
+                    <label class="option"><input type="radio" name="q3" value="0"><span class="option-text"><strong>B.</strong> Markup Language</span></label>
+                    <label class="option"><input type="radio" name="q3" value="0"><span class="option-text"><strong>C.</strong> Styling Language</span></label>
+                </div>
+            </div>
+
+            <!-- Q4 -->
+            <div class="question-box">
+                <p>4. Which tag is used for image?</p>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q4" value="1"><span class="option-text"><strong>A.</strong> &lt;img&gt;</span></label>
+                    <label class="option"><input type="radio" name="q4" value="0"><span class="option-text"><strong>B.</strong> &lt;p&gt;</span></label>
+                    <label class="option"><input type="radio" name="q4" value="0"><span class="option-text"><strong>C.</strong> &lt;div&gt;</span></label>
+                </div>
+            </div>
+
+            <!-- Q5 -->
+            <div class="question-box">
+                <p>5. JS comment symbol?</p>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q5" value="1"><span class="option-text"><strong>A.</strong> //</span></label>
+                    <label class="option"><input type="radio" name="q5" value="0"><span class="option-text"><strong>B.</strong> ##</span></label>
+                    <label class="option"><input type="radio" name="q5" value="0"><span class="option-text"><strong>C.</strong> **</span></label>
+                </div>
+            </div>
+
+            <div class="center-btn">
+                <button type="submit">✅ Submit Quiz</button>
+            </div>
+
+        </form>
+
+        <div id="result"></div>
+
+    </div>
+
+</div>
+
+<script>
+function startQuiz() {
+    let name=document.getElementById("name").value;
+    let email=document.getElementById("email").value;
+    let age=document.getElementById("age").value;
+    let password=document.getElementById("password").value;
+
+    if(name==""||email==""||age==""||password==""){
+        alert("Fill all details!");
+        return;
+    }
+
+    document.getElementById("page1").style.display="none";
+    document.getElementById("page2").style.display="block";
+}
+
+function submitQuiz(){
+    let answers=document.querySelectorAll("input[type=radio]:checked");
+
+    if(answers.length<5){
+        alert("Answer all questions!");
+        return false;
+    }
+
+    let score=0;
+    answers.forEach(ans=>score+=Number(ans.value));
+
+    document.getElementById("result").innerHTML=
+        "🎉 Your Score: "+score+"/5";
+
+    return false;
+}
+</script>
+
+</body>
+</html>
